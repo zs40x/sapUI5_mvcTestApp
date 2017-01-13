@@ -7,8 +7,8 @@
 		<subHeader>
 			<Toolbar>
 				<ToolbarSpacer/>
-				<Button icon="sap-icon://slim-arrow-up" press="onPageUp" enabled="{viewModel>/buttonPrev}" visible="{device>/system/phone}" />
-				<Button icon="sap-icon://slim-arrow-down" press="onPageDown" enabled="{viewModel>/buttonNext}" visible="{device>/system/phone}" />
+				<Button icon="sap-icon://slim-arrow-up" press="onPageUp" enabled="{viewModel>/buttonPrev}" visible="{device>/system/phone}" tooltip="Previous"/>
+				<Button icon="sap-icon://slim-arrow-down" press="onPageDown" enabled="{viewModel>/buttonNext}" visible="{device>/system/phone}" tooltip="Next" />
 			</Toolbar>
 		</subHeader>
 		<content>
@@ -19,8 +19,6 @@
 					<ObjectAttribute text="{ path: 'Address/PhoneNumber', type: '.types.PhoneNumber' }"/>
 				</attributes>
 			</ObjectHeader>
-			
-			<Input value= "{Name}"/>
 			
 			<Table width="auto" class="sapUiResponsiveMargin" items="{Contacts}" noDataText="{i18n>tableNoDataText}" growing="true" growingScrollToLoad="true">
 				<headerToolbar>

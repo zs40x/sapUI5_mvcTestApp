@@ -33,13 +33,13 @@ sap.ui.define([
 		},
 		onPageUp: function(oEvent) {
 			var sID = oEvent.getSource().getBindingContext().sPath;
-			sID = parseInt(sID.substr(sID.lastIndexOf("/")+1));
+			sID = parseInt(sID.substr(sID.lastIndexOf("/") + 1), 10);
 			sID = sID - 1;
 			this.getRouter().navTo("detail", { ID: sID });	
 		},
 		onPageDown: function(oEvent) {
 			var sID = oEvent.getSource().getBindingContext().sPath;
-			sID = parseInt(sID.substr(sID.lastIndexOf("/")+1));
+			sID = parseInt(sID.substr(sID.lastIndexOf("/") + 1), 10);
 			sID = sID + 1;
 			this.getRouter().navTo("detail", { ID: sID });	
 		},
@@ -47,9 +47,10 @@ sap.ui.define([
 		/**
 		 *  internal methods
 		 */
+		 
 		_onObjectMatched : function (oEvent) {
 			this.sObjectId = oEvent.getParameter("arguments").ID;
-			var sObjectPath = "/Suppliers/" + this.sObjectId;
+			var sObjectPath = "/" + this.sObjectId;
 			
 			this._bindView(sObjectPath);
 			this._updateViewModel();
@@ -61,11 +62,11 @@ sap.ui.define([
 		_updateViewModel : function() {
 			var oModel = this.getView().getModel();
 			var oViewModel = this.getView().getModel("viewModel");
-			var nextObjectId = parseInt(this.sObjectId) + 1;
-			var prevObjectId = parseInt(this.sObjectId) - 1;
+			var nextObjectId = parseInt(this.sObjectId, 10) + 1;
+			var prevObjectId = parseInt(this.sObjectId, 10) - 1;
 			
-			var bNext = !!oModel.getProperty("/Suppliers/" + nextObjectId);
-			var bPrev = !!oModel.getProperty("/Suppliers/" + prevObjectId);
+			var bNext = !!oModel.getProperty("/" + nextObjectId);
+			var bPrev = !!oModel.getProperty("/" + prevObjectId);
 			
 			oViewModel.setProperty("/buttonNext", bNext);
 			oViewModel.setProperty("/buttonPrev", bPrev);
